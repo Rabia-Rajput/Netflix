@@ -17,7 +17,7 @@ const Login = () => {
           )}
           <input type="email" placeholder="Your Email" />
           <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <button>{signState}</button>
           <div className="form-help">
             <div className="remember">
               <input type="checkbox" />
@@ -29,11 +29,11 @@ const Login = () => {
         <div className="form-switch">
           {signState === "Sign In" ? (
             <p>
-              New to Netflix? <span>Sign Up NoW</span>
+              New to Netflix? <span onClick={()=>{setSignState('Sign Up')}}>Sign Up Now</span>
             </p>
           ) : (
             <p>
-              Already have account? <span>Sign In NoW</span>
+              Already have account? <span onClick={()=>{setSignState('Sign In')}}>Sign In Now</span>
             </p>
           )}
         </div>
