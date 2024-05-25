@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
+import { login, signup } from "../../firebase";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const user_auth=async()=>{
+    if (signState==='Sign In'){
+      await login(email, password);
+    } else{
+      await signup(name,email, password);
+    }
+  }
   return (
     <div className="login">
       <img src={logo} alt="" className="login-logo" />
@@ -11,13 +22,13 @@ const Login = () => {
         <h1>{signState}</h1>
         <form>
           {signState === "Sign Up" ? (
-            <input type="text" placeholder="Your name" />
+            <input value={name} onChange={(e)=>{e.target.value}} type="text" placeholder="Your name" />
           ) : (
             <></>
           )}
-          <input type="email" placeholder="Your Email" />
-          <input type="password" placeholder="Password" />
-          <button>{signState}</button>
+          <input value={email} onChange={(e)=>{e.target.value}} type="email" placeholder="Your Email" />
+          <input value={password} onChange={(e)=>{e.target.value}} type="password" placeholder="Password" />
+          <button onClick={user_auth} type="submit">{signState}</button>
           <div className="form-help">
             <div className="remember">
               <input type="checkbox" />
@@ -29,11 +40,25 @@ const Login = () => {
         <div className="form-switch">
           {signState === "Sign In" ? (
             <p>
-              New to Netflix? <span onClick={()=>{setSignState('Sign Up')}}>Sign Up Now</span>
+              New to Netflix?{" "}
+              <span
+                onClick={() => {
+                  setSignState("Sign Up");
+                }}
+              >
+                Sign Up Now
+              </span>
             </p>
           ) : (
             <p>
-              Already have account? <span onClick={()=>{setSignState('Sign In')}}>Sign In Now</span>
+              Already have account?{" "}
+              <span
+                onClick={() => {
+                  setSignState("Sign In");
+                }}
+              >
+                Sign In Now
+              </span>
             </p>
           )}
         </div>
