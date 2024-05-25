@@ -25,7 +25,6 @@ useEffect(() => {
     .then(response => setApiData(response.results[0]))
     .catch(err => console.error(err));
 
- 
 }, [])
 
   return (
