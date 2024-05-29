@@ -1,7 +1,11 @@
 .title-cards{
 margin-top: 50px;
 margin-bottom: 30px;
+position: relative;
 }
+.title-cards:hover .icon {
+    display: flex; 
+  }
 .title-cards h2{
 margin-bottom: 8px;
 }
@@ -9,6 +13,8 @@ margin-bottom: 8px;
     display: flex;
     gap: 10px;
     overflow-x: scroll;
+    scroll-behavior: smooth;
+    padding: 10px 0;
 }
 .card-list::-webkit-scrollbar{
     display: none;
@@ -28,6 +34,33 @@ margin-bottom: 8px;
     text-decoration: none;
     color: white;
 }
+.icon{
+   background: white; 
+   border-radius: 50%;
+   z-index: 10;
+   cursor: pointer;
+   position: absolute;
+   opacity: 0.5;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+display: none;
+  
+}
+.icon-left {
+    left: 10px;
+  }
+  
+  .icon-right {
+    right: 10px;
+  }
+.icon:hover {
+    opacity: 1;
+    
+  }
 @media (max-width:800px) {
     .title-cards{
         margin-top: 20px;
