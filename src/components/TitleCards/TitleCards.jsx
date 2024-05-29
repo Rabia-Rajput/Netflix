@@ -30,7 +30,9 @@ const TitleCards = ({ title, category }) => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${category ? category : "now_playing"}`,
+      `https://api.themoviedb.org/3/movie/${
+        category ? category : "now_playing"
+      }`,
       options
     )
       .then((response) => response.json())
@@ -42,7 +44,11 @@ const TitleCards = ({ title, category }) => {
   return (
     <div className="title-cards">
       <h2>{title ? title : "Popular on Netflix"}</h2>
-      <MdChevronLeft size={40} className="icon icon-left" onClick={scrollLeft} />
+      <MdChevronLeft
+        size={40}
+        className="icon icon-left"
+        onClick={scrollLeft}
+      />
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
           return (
@@ -56,7 +62,11 @@ const TitleCards = ({ title, category }) => {
           );
         })}
       </div>
-      <MdChevronRight size={40} className="icon icon-right" onClick={scrollRight} />
+      <MdChevronRight
+        size={40}
+        className="icon icon-right"
+        onClick={scrollRight}
+      />
     </div>
   );
 };
